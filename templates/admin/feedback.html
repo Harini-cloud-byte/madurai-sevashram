@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Feedback</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+        body{
+            font-family:"Segoe UI",system-ui,sans-serif;
+            margin:0;
+            background:linear-gradient(120deg,#eef2ff,#e0f2fe,#f0fdfa);
+        }
+
+        header{
+            background:linear-gradient(90deg,#0b3c5d,#145a86);
+            color:white;
+            padding:20px;
+            text-align:center;
+            box-shadow:0 6px 18px rgba(0,0,0,.25);
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            margin-bottom: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            position: relative;
+            transition: .3s;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+        }
+
+        .card h4 {
+            margin: 0 0 8px 0;
+            color: #0b3c5d;
+            font-size:18px;
+        }
+
+        .info {
+            font-size:14px;
+            color:#475569;
+            margin-bottom:10px;
+        }
+
+        .message {
+            color: #1e293b;
+            font-size:15px;
+            line-height:1.5;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #d9534f;
+            color: white;
+            padding: 7px 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight:600;
+        }
+
+        .delete-btn:hover {
+            background: #c9302c;
+        }
+
+        .empty{
+            text-align:center;
+            color:#64748b;
+            margin-top:40px;
+            font-size:18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>Admin Feedback Panel</h2>
+</header>
+
+<div class="container">
+
+{% if messages %}
+    {% for f in messages %}
+    <div class="card">
+
+        <h4>{{ f.name }}</h4>
+
+        <div class="info">
+            📧 {{ f.email }} <br>
+            📞 {{ f.phone }} 
+            
+        </div>
+
+        <div class="message">
+            {{ f.message }}
+        </div>
+
+        <form action="/admin/delete-feedback/{{ f.id }}" method="POST">
+            <button class="delete-btn"
+                onclick="return confirm('Delete this feedback?');">
+                Delete
+            </button>
+        </form>
+
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="empty">No feedback messages yet.</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
