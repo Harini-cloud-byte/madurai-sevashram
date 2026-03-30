@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Home Page</title>
+
+    <style>
+        body{
+            font-family:"Segoe UI",system-ui,sans-serif;
+            margin:0;
+            background:linear-gradient(135deg,#eef5ff,#e0f2fe,#f8fafc);
+        }
+
+        .container{
+            max-width:600px;
+            margin:60px auto;
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 15px 35px rgba(0,0,0,.2);
+        }
+
+        h2{
+            text-align:center;
+            margin-bottom:30px;
+            color:#1e293b;
+        }
+
+        label{
+            font-weight:600;
+            display:block;
+            margin-top:15px;
+            margin-bottom:6px;
+        }
+
+        input, textarea{
+            width:100%;
+            padding:12px;
+            border-radius:10px;
+            border:1px solid #ccc;
+            font-size:14px;
+        }
+
+        textarea{
+            resize:none;
+            height:100px;
+        }
+
+        .btn{
+            margin-top:25px;
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:12px;
+            background:#2563eb;
+            color:white;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .btn:hover{
+            background:#1e40af;
+        }
+
+        .back{
+            text-align:center;
+            margin-top:20px;
+        }
+
+        .back a{
+            text-decoration:none;
+            color:#2563eb;
+            font-weight:600;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Update Home Page</h2>
+
+    <form method="POST">
+
+        <!-- TITLE -->
+        <label>Website Title</label>
+        <input type="text" name="title" value="{{ home.title }}" required>
+
+        <!-- DESCRIPTION -->
+        <label>Hero Description</label>
+        <textarea name="description" required>{{ home.description }}</textarea>
+
+        <!-- BACKGROUND COLOR -->
+        <label>Background Color</label>
+        <input type="color" name="bgcolor" value="{{ home.bgcolor }}">
+
+        <!-- TEXT COLOR -->
+        <label>Text Color</label>
+        <input type="color" name="textcolor" value="{{ home.textcolor }}">
+
+        <button class="btn">Update</button>
+
+    </form>
+
+    <div class="back">
+        <a href="/admin/dashboard">⬅ Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>
