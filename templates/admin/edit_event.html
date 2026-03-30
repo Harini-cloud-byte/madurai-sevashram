@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Event - Madurai Sevashram</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+    body{
+        margin:0;
+        font-family:"Segoe UI",system-ui,sans-serif;
+        background:linear-gradient(120deg,#e0f2fe,#eef2ff,#f0fdfa);
+        background-size:400% 400%;
+        animation:bgMove 15s ease infinite;
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+    }
+
+    @keyframes bgMove{
+        0%{background-position:0% 50%;}
+        50%{background-position:100% 50%;}
+        100%{background-position:0% 50%;}
+    }
+
+    header{
+        background:linear-gradient(90deg,#0b3c5d,#145a86);
+        color:white;
+        padding:18px;
+        text-align:center;
+        font-size:22px;
+        font-weight:700;
+    }
+
+    .container{
+        flex:1;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:30px 15px;
+    }
+
+    .card{
+        width:100%;
+        max-width:520px;
+        padding:28px;
+        border-radius:18px;
+        background:rgba(255,255,255,.7);
+        backdrop-filter:blur(12px);
+        box-shadow:0 20px 40px rgba(0,0,0,.18);
+    }
+
+    h3{
+        text-align:center;
+        color:#0b3c5d;
+        font-size:26px;
+        margin-bottom:20px;
+    }
+
+    label{
+        font-weight:600;
+        margin-top:14px;
+        display:block;
+        color:#0b3c5d;
+    }
+
+    input, textarea{
+        width:100%;
+        padding:12px;
+        margin-top:6px;
+        border-radius:10px;
+        border:1px solid #cbd5e1;
+        font-size:15px;
+    }
+
+    .hint{
+        font-size:13px;
+        color:#64748b;
+        margin-top:4px;
+    }
+
+    button{
+        width:100%;
+        margin-top:22px;
+        padding:13px;
+        border:none;
+        border-radius:12px;
+        font-size:17px;
+        font-weight:700;
+        color:white;
+        background:linear-gradient(90deg,#145a86,#0284c7);
+        cursor:pointer;
+    }
+
+    button:hover{
+        transform:scale(1.04);
+    }
+
+    .back{
+        text-align:center;
+        margin-top:15px;
+    }
+
+    .back a{
+        text-decoration:none;
+        color:#0284c7;
+        font-weight:600;
+    }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+Edit Event – Madurai Sevashram
+</header>
+
+<div class="container">
+<form method="post" enctype="multipart/form-data" class="card">
+
+<h3>Edit Event Details</h3>
+
+<!-- NAME -->
+<label>Event Name</label>
+<input type="text" name="name" value="{{ e.name }}" required>
+
+<!-- DATETIME -->
+<label>Date & Time</label>
+<input type="datetime-local" name="datetime" value="{{ e.datetime }}" required>
+
+<!-- LOCATION -->
+<label>Location</label>
+<input type="text" name="location" value="{{ e.location }}" required>
+
+<!-- DESCRIPTION -->
+<label>Description</label>
+<textarea name="description" rows="4">{{ e.description }}</textarea>
+
+<!-- IMAGES -->
+<label>Update Images (optional)</label>
+<input type="file" name="images" multiple>
+<div class="hint">Leave empty to keep existing images</div>
+
+<button type="submit">Update Event</button>
+
+<div class="back">
+    <a href="/admin/events">⬅ Back to Events</a>
+</div>
+
+</form>
+</div>
+
+</body>
+</html>
