@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Annual Reports</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #eef3f8, #f9fbff);
+            min-height: 100vh;
+            animation: fadeIn 1s ease-in;
+        }
+
+        header {
+            background: linear-gradient(90deg, #0b3c5d, #145a86);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.18);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 520px;
+            padding: 25px;
+            animation: slideUp 0.8s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        h3 {
+            text-align: center;
+            color: #0b3c5d;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #0b3c5d;
+            box-shadow: 0 0 6px rgba(11,60,93,0.3);
+        }
+
+        .hint {
+            font-size: 13px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            font-size: 16px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #072a40;
+            transform: scale(1.02);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #0b3c5d;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(35px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>Madurai Sevashram – Add Annual Reports</h2>
+</header>
+
+<div class="container">
+    <form method="POST" enctype="multipart/form-data" class="card">
+        <h3>Annual Report Upload</h3>
+
+        <label>Report Year</label>
+        <input type="text" name="year" placeholder="Eg: 2024–2025" required>
+
+        <label>Select Report Files</label>
+        <input type="file" name="files" multiple required>
+        <div class="hint">You can upload multiple PDF / document files</div>
+
+        <button type="submit">Upload Reports</button>
+    </form>
+</div>
+
+<div class="back-link">
+    <a href="/admin/reports">← Back to Reports</a>
+</div>
+
+</body>
+</html>
