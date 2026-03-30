@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Madurai Sevashram</title>
+
+<style>
+html{scroll-behavior:smooth;}
+
+body{
+ margin:0;
+ font-family:"Segoe UI",system-ui,sans-serif;
+ color:#1e293b;
+}
+
+/* 🔥 dynamic background handled inline (not here) */
+
+@keyframes bgMove{
+ 0%{background-position:0% 50%;}
+ 50%{background-position:100% 50%;}
+ 100%{background-position:0% 50%;}
+}
+
+/* HEADER */
+header{
+ background:rgba(11,60,93,.85);
+ backdrop-filter:blur(12px);
+ color:white;
+ padding:20px 0 28px;
+ position:sticky;
+ top:0;
+ z-index:1000;
+ box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+header h2{
+ margin:0;
+ text-align:center;
+ font-size:52px;
+ font-weight:800;
+ animation:titleGlow 3s ease-in-out infinite alternate;
+}
+@keyframes titleGlow{
+ from{text-shadow:0 0 5px #fff;}
+ to{text-shadow:0 0 18px #7dd3fc;}
+}
+
+.menu-toggle{
+ display:none;
+ position:absolute;
+ right:25px;
+ top:30px;
+ font-size:34px;
+ cursor:pointer;
+}
+
+nav{
+ display:flex;
+ justify-content:center;
+ gap:22px;
+ margin-top:18px;
+ flex-wrap:wrap;
+}
+nav a{
+ background:rgba(255,255,255,0.18);
+ padding:14px 28px;
+ border-radius:16px;
+ text-decoration:none;
+ color:white;
+ font-weight:600;
+ font-size:18px;
+ transition:.35s;
+}
+nav a:hover{
+ background:white;
+ color:#0b3c5d;
+ transform:translateY(-5px) scale(1.08);
+}
+
+@media(max-width:768px){
+ header h2{font-size:36px;}
+ .menu-toggle{display:block;color:white;}
+ nav{flex-direction:column;align-items:center;max-height:0;overflow:hidden;transition:.4s;}
+ nav.active{max-height:900px;margin-top:25px;}
+ nav a{width:80%;text-align:center;}
+}
+
+/* HERO */
+.hero{
+ position:relative;
+ height:60vh;
+ overflow:hidden;
+ margin-top:90px; /* ✅ FIX */
+}
+
+.slides{display:flex;height:100%;transition:1s;}
+.slide{min-width:100%;}
+.slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.8);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.65));}
+
+.hero-text{
+ position:absolute;
+ bottom:22%;
+ left:8%;
+ color:white;
+ animation:floatText 3s ease-in-out infinite;
+}
+.hero-text h1{font-size:46px;}
+@keyframes floatText{
+ 0%,100%{transform:translateY(0);}
+ 50%{transform:translateY(-12px);}
+}
+
+.container{
+ max-width:1100px;
+ margin:auto;
+ padding:70px 20px;
+}
+
+.section-title{text-align:center;font-size:36px;margin-bottom:22px;color:#0b3c5d;}
+.section-sub{text-align:center;font-size:18px;margin-bottom:35px;color:#475569;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;}
+.about-card{
+ background:rgba(255,255,255,.7);
+ backdrop-filter:blur(10px);
+ padding:34px;border-radius:18px;
+ box-shadow:0 15px 30px rgba(0,0,0,.15);
+ transition:.4s;
+}
+.about-card:hover{transform:translateY(-10px) scale(1.05);}
+
+/* FOUNDER SECTION */
+.founder-section{
+ padding:80px 20px;
+ background:linear-gradient(135deg,#e0f2fe,#f8fafc);
+}
+
+.founder-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:40px;
+ max-width:900px;
+ margin:auto;
+}
+
+.founder-card{
+ background:white;
+ border-radius:20px;
+ box-shadow:0 15px 35px rgba(0,0,0,0.2);
+ text-align:center;
+ padding:40px;
+ transition:.4s;
+}
+
+.founder-card:hover{
+ transform:translateY(-10px) scale(1.05);
+ box-shadow:0 25px 45px rgba(0,0,0,0.3);
+}
+
+.founder-card h3{
+ color:#0b3c5d;
+ font-size:26px;
+ margin-bottom:10px;
+}
+
+.founder-card p{
+ color:#475569;
+}
+
+/* GUIDELINES */
+.guidelines{
+ background:linear-gradient(135deg,#eef5ff,#dbeafe);
+ border-radius:22px;
+ padding:50px 40px;
+}
+
+/* MAP */
+.map-box{margin-top:25px;border-radius:20px;overflow:hidden;box-shadow:0 15px 30px rgba(0,0,0,0.2);max-width:620px;margin:auto;}
+.map-box iframe{height:280px;}
+.map-btn-wrapper{text-align:center;margin-top:22px;}
+.map-btn{
+ display:inline-block;padding:13px 24px;
+ background:linear-gradient(90deg,#145a86,#0284c7);
+ color:white;border-radius:12px;text-decoration:none;font-weight:600;
+ transition:.35s;
+}
+.map-btn:hover{transform:scale(1.08);}
+
+/* FOOTER */
+footer{
+ background:#0b3c5d;
+ color:white;
+ padding:60px 20px 30px;
+ margin-top:80px;
+}
+
+.footer-grid{
+ max-width:1100px;
+ margin:auto;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+ gap:40px;
+ line-height:1.7;
+}
+
+.footer-bottom{
+ text-align:center;
+ margin-top:35px;
+ font-size:15px;
+ color:#cbd5e1;
+ border-top:1px solid rgba(255,255,255,.25);
+ padding-top:18px;
+ padding-bottom:12px;
+}
+</style>
+</head>
+
+<!-- 🔥 ADMIN CONTROLLED COLORS -->
+<body style="background: {{ home['bgcolor'] }}; color: {{ home['textcolor'] }};">
+
+<header>
+<h2>{{ home['title'] }}</h2>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="navMenu">
+<a href="/">Home</a>
+<a href="/about">About Us</a>
+<a href="/events">Events</a>
+<a href="/reports">Reports</a>
+<a href="/gallery">Gallery</a>
+<a href="/contact">Contact</a>
+<a href="/admin">Admin</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<div class="slides" id="slides">
+{% for g in hero_images %}
+{% for img in g.image.split(',') %}
+<div class="slide">
+<img src="/static/uploads/gallery/{{ img }}">
+<div class="hero-overlay"></div>
+<div class="hero-text">
+<h1>{{ home['title'] }}</h1>
+<p>{{ home['description'] }}</p>
+</div>
+</div>
+{% endfor %}
+{% endfor %}
+</div>
+</section>
+
+<section class="container" id="about">
+<h2 class="section-title">About Madurai Sevashram</h2>
+<div class="about-grid">
+<div class="about-card"><h3>🌱 Our Purpose</h3><p>Uplifting underprivileged communities.</p></div>
+<div class="about-card"><h3>🤝 Our Values</h3><p>Compassion, integrity, respect.</p></div>
+<div class="about-card"><h3>🌍 Our Impact</h3><p>Empowering lives sustainably.</p></div>
+</div>
+</section>
+
+<!-- FOUNDER SECTION -->
+<section class="founder-section">
+<h2 class="section-title">Our Founders</h2>
+<p class="section-sub">Visionaries who dedicated their lives to service and humanity</p>
+
+<div class="founder-grid">
+<div class="founder-card">
+<h3>Dr. T. S. Soundram</h3>
+<p>A renowned social reformer who devoted her life to rural development, healthcare, and women empowerment.</p>
+</div>
+
+<div class="founder-card">
+<h3>Smt. Pankajam Rajam</h3>
+<p>A compassionate leader who supported the mission of Sevashram and contributed to uplifting many communities.</p>
+</div>
+</div>
+</section>
+
+<section class="container">
+<h2 class="section-title">Our Vision & Mission</h2>
+<p class="section-sub">Guiding principles that drive the service of Madurai Sevashram</p>
+
+<div class="about-grid">
+<div class="about-card">
+<h3>🌟 Vision</h3>
+<p>To create a society where every child and underprivileged individual has access to education, healthcare, dignity, and opportunities.</p>
+</div>
+
+<div class="about-card">
+<h3>🎯 Mission</h3>
+<p>To support vulnerable communities through education, healthcare and empowerment.</p>
+</div>
+
+<div class="about-card">
+<h3>🤍 Our Commitment</h3>
+<p>Committed to compassion and creating a safe environment for growth.</p>
+</div>
+</div>
+</section>
+
+<section class="container">
+<h2 class="section-title">📍 Visit Madurai Sevashram</h2>
+<p class="section-sub">Old Natham Road, Madurai – 625014</p>
+<div class="map-box">
+<iframe src="https://www.google.com/maps?q=Madurai+Sevashram&output=embed" width="100%" style="border:0;"></iframe>
+</div>
+
+<div class="map-btn-wrapper">
+<a class="map-btn" href="https://www.google.com/maps?q=Madurai+Sevashram" target="_blank">Open in Google Maps</a>
+</div>
+</section>
+
+<footer>
+<div class="footer-grid">
+<div>
+<h3>Madurai Sevashram</h3>
+<p>A home of compassion, dignity, and service to humanity.</p>
+</div>
+
+<div>
+<h3>Contact</h3>
+<p>Old Natham Road, Madurai – 625014</p>
+<p>📞 +91 9940932462</p>
+<p>✉ maduraisevashram@gmail.com</p>
+</div>
+
+<div class="footer-bottom">
+ Madurai Sevashram. All Rights Reserved.
+</div>
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById("navMenu").classList.toggle("active");}
+let index=0;const slides=document.getElementById("slides");
+setInterval(()=>{index=(index+1)%slides.children.length;slides.style.transform=`translateX(-${index*100}%)`;},4000);
+</script>
+
+</body>
+</html>
