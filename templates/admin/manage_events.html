@@ -162,14 +162,27 @@ body{
         <button class="add-btn">➕ Add Event</button>
     </a>
 
-    {% for e in events %}
-    <div class="card">
-        <h3>{{ e.title }}</h3>
-        <p>{{ e.description }}</p>
-        <a href="/admin/edit-event/{{ e.id }}">Edit</a>
-        <a href="/admin/delete-event/{{ e.id }}">Delete</a>
-    </div>
-    {% endfor %}
+   {% for e in events %}
+<div class="card">
+
+    <!-- EVENT NAME -->
+    <h3>📌 {{ e.name }}</h3>
+
+    <!-- DATE & TIME -->
+    <p><strong>🕒 Date & Time:</strong> {{ e.datetime }}</p>
+
+    <!-- LOCATION -->
+    <p><strong>📍 Venue:</strong> {{ e.location }}</p>
+
+    <!-- DESCRIPTION -->
+    <p><strong>📝 Description:</strong> {{ e.description }}</p>
+
+    <!-- ACTIONS -->
+    <a href="/admin/edit-event/{{ e.id }}">✏ Edit</a>
+    <a href="/admin/delete-event/{{ e.id }}">🗑 Delete</a>
+
+</div>
+{% endfor %}
 </div>
 
 </body>
