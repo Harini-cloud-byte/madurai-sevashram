@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Annual Reports</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',system-ui,sans-serif;
+}
+
+/* ---------- BACKGROUND ---------- */
+body{
+    min-height:100vh;
+    background: linear-gradient(
+        135deg,
+        #f1f5f9,
+        #e0f2fe,
+        #ede9fe,
+        #f8fafc
+    );
+    background-size:300% 300%;
+    animation:bgFlow 30s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+@keyframes bgFlow{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* ---------- MAIN CONTAINER ---------- */
+.container{
+    width:100%;
+    max-width:900px;
+    margin-top:50px;
+    background:rgba(255,255,255,.96);
+    padding:40px;
+    border-radius:22px;
+    box-shadow:0 25px 50px rgba(0,0,0,.15);
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ---------- HEADER ---------- */
+.container h2{
+    text-align:center;
+    font-size:32px;
+    font-weight:700;
+    color:#1e293b;
+    margin-bottom:28px;
+}
+
+/* ---------- ADD BUTTON ---------- */
+.add-btn{
+    display:block;
+    margin:0 auto 35px auto;
+    padding:14px 28px;
+    background:linear-gradient(135deg,#1e40af,#2563eb);
+    color:white;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .2s ease;
+}
+
+.add-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(37,99,235,.35);
+}
+
+/* ---------- REPORT CARD ---------- */
+.card{
+    background:white;
+    padding:26px 28px;
+    border-radius:18px;
+    margin-bottom:22px;
+    box-shadow:0 12px 28px rgba(0,0,0,.12);
+    transition:transform .2s ease, box-shadow .2s ease;
+    animation:cardSlide .6s ease;
+}
+
+@keyframes cardSlide{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+}
+
+/* ---------- YEAR ---------- */
+.card .year{
+    font-size:22px;
+    font-weight:700;
+    color:#1e40af;
+    margin-bottom:14px;
+}
+
+/* ---------- FILE LIST ---------- */
+.card ul{
+    margin-left:18px;
+    margin-bottom:16px;
+}
+
+.card ul li{
+    margin-bottom:8px;
+}
+
+.card ul li a{
+    color:#2563eb;
+    font-weight:500;
+    text-decoration:none;
+}
+
+.card ul li a:hover{
+    text-decoration:underline;
+}
+
+/* ---------- EMPTY TEXT ---------- */
+.no-files{
+    color:#64748b;
+    font-size:14px;
+    margin-bottom:16px;
+}
+
+/* ---------- ACTION LINKS ---------- */
+.card a.action{
+    text-decoration:none;
+    font-weight:600;
+    margin-right:14px;
+    font-size:14px;
+}
+
+.card a.edit{
+    color:#2563eb;
+}
+
+.card a.delete{
+    color:#dc2626;
+}
+
+.card a.action:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Annual Reports</h2>
+
+    <a href="/admin/add-report">
+        <button class="add-btn">➕ Add Report</button>
+    </a>
+
+    {% for r in reports %}
+    <div class="card">
+        <div class="year">{{ r.year }}</div>
+
+        {% if r.file %}
+        <ul>
+            {% for f in r.file.split(',') %}
+            <li>
+                <a href="{{ url_for('static', filename='uploads/reports/' + f) }}" target="_blank">
+                    {{ f.split('/')[-1] }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="no-files">No files available</p>
+        {% endif %}
+
+        <a href="/admin/edit-report/{{ r.id }}" class="action edit">Edit</a>
+        <a href="/admin/delete-report/{{ r.id }}" class="action delete" onclick="return confirmDelete()">Delete</a>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function confirmDelete(){
+    return confirm("Are you sure you want to delete this report?");
+}
+</script>
+
+</body>
+</html>
