@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Report</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+/* 🌈 Animated Background */
+body{
+    margin:0;
+    font-family:"Segoe UI",system-ui,sans-serif;
+    background:linear-gradient(120deg,#eef2ff,#e0f2fe,#f0fdfa,#fef9c3);
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* 📦 Container */
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+/* 💎 Card Design */
+.card{
+    width:100%;
+    max-width:420px;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(12px);
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    animation:fadeUp .8s ease;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 30px 55px rgba(0,0,0,0.25);
+}
+
+/* ✨ Heading */
+h2{
+    text-align:center;
+    color:#0b3c5d;
+    margin-bottom:25px;
+    font-size:30px;
+    animation:fadeDown .7s ease;
+}
+
+/* 🧾 Inputs */
+input[type="text"],
+input[type="file"]{
+    width:100%;
+    padding:12px;
+    margin-top:12px;
+    border-radius:10px;
+    border:1px solid #cbd5e1;
+    font-size:15px;
+    transition:.3s;
+}
+
+input:focus{
+    outline:none;
+    border-color:#0b3c5d;
+    box-shadow:0 0 0 3px rgba(11,60,93,.15);
+}
+
+/* 📄 Text */
+p{
+    margin-top:15px;
+    font-size:14px;
+    color:#475569;
+}
+
+/* 🚀 Button */
+button{
+    width:100%;
+    margin-top:22px;
+    padding:13px;
+    font-size:16px;
+    font-weight:600;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#0b3c5d,#145a86);
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 20px rgba(11,60,93,.3);
+}
+
+/* 🎬 Animations */
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeDown{
+    from{opacity:0; transform:translateY(-30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>Edit Report</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            <input type="text" name="year" value="{{ r.year }}" required>
+
+            <p>Upload new file to replace existing (optional)</p>
+
+            <input type="file" name="file">
+
+            <button type="submit">Update Report</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
