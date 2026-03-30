@@ -1,0 +1,95 @@
+/* Default (fallback) */
+body{
+    font-family:Segoe UI;
+    margin:0;
+    transition: all 0.5s ease;
+}
+
+/* 🌅 MORNING THEME */
+body.morning{
+    background:linear-gradient(#eef2f3,#d9e2ec);
+    color:#222;
+}
+body.morning header{
+    background:#0b3c5d;
+}
+body.morning .container{
+    background:white;
+}
+body.morning button{
+    background:#0b3c5d;
+}
+
+/* 🌇 AFTERNOON THEME */
+body.afternoon{
+    background:linear-gradient(#fff3cd,#ffe0a3);
+    color:#333;
+}
+body.afternoon header{
+    background:#b9770e;
+}
+body.afternoon .container{
+    background:#fffaf0;
+}
+body.afternoon button{
+    background:#b9770e;
+}
+
+/* 🌙 NIGHT THEME */
+body.night{
+    background:linear-gradient(#1a1a2e,#16213e);
+    color:#fff;
+}
+body.night header{
+    background:#0f3460;
+}
+body.night .container{
+    background:#1f4068;
+}
+body.night button{
+    background:#0f3460;
+}
+
+/* COMMON STYLES */
+header{
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    margin:10px;
+    text-decoration:none;
+}
+
+.container{
+    width:85%;
+    margin:30px auto;
+    padding:20px;
+    border-radius:10px;
+}
+
+.card{
+    box-shadow:0 4px 8px rgba(0,0,0,.1);
+    padding:15px;
+    margin:15px 0;
+    border-radius:8px;
+}
+
+button{
+    color:white;
+    padding:8px 12px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+button:hover{
+    opacity:0.9;
+}
+
+input,textarea{
+    width:100%;
+    padding:8px;
+    margin:6px 0;
+}
