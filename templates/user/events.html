@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Events - Madurai Sevashram</title>
+
+<style>
+
+/* ===== PREMIUM NGO GRADIENT BACKGROUND ===== */
+body{
+ margin:0;
+ font-family:"Segoe UI",system-ui,sans-serif;
+ background:linear-gradient(120deg,#eef2ff,#e0f2fe,#f0fdfa,#fef9c3);
+ background-size:400% 400%;
+ animation:bgMove 16s ease infinite;
+}
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* ===== NAVBAR ===== */
+header{
+ background:linear-gradient(90deg,#0b3c5d,#145a86);
+ padding:18px;
+ text-align:center;
+ box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+header a{
+ color:white;
+ margin:0 18px;
+ text-decoration:none;
+ font-weight:700;
+ font-size:18px;
+ transition:.3s;
+}
+header a:hover{
+ color:#ffd166;
+ transform:scale(1.1);
+}
+
+/* ===== CONTAINER ===== */
+.container{
+ max-width:1000px;
+ margin:auto;
+ padding:60px 20px;
+}
+
+h2{
+ text-align:center;
+ font-size:42px;
+ color:#0b3c5d;
+ margin-bottom:45px;
+ animation:fadeDown .8s ease;
+}
+@keyframes fadeDown{
+ from{opacity:0; transform:translateY(-40px);}
+ to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== EVENT CARD (GLASS EFFECT) ===== */
+.card{
+ background:rgba(255,255,255,.75);
+ backdrop-filter:blur(10px);
+ padding:30px;
+ border-radius:20px;
+ margin-bottom:45px;
+ box-shadow:0 20px 40px rgba(0,0,0,.15);
+ transition:.4s;
+ animation:fadeUp .9s ease;
+}
+.card:hover{
+ transform:translateY(-10px) scale(1.01);
+}
+@keyframes fadeUp{
+ from{opacity:0; transform:translateY(40px);}
+ to{opacity:1; transform:translateY(0);}
+}
+
+.card h3{
+ font-size:30px;
+ color:#0b3c5d;
+}
+
+.date{
+ font-weight:700;
+ color:#0284c7;
+ margin:12px 0 25px;
+ font-size:18px;
+}
+
+/* ===== MEDIUM IMAGE DESIGN ===== */
+.event-images{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:22px;
+}
+
+/* IMAGE FRAME */
+.img-box{
+ width:85%;
+ max-width:650px;
+ background:white;
+ padding:10px;
+ border-radius:16px;
+ box-shadow:0 10px 28px rgba(0,0,0,.18);
+ transition:.4s;
+}
+
+.img-box:hover{
+ transform:scale(1.04);
+}
+
+/* IMAGE */
+.img-box img{
+ width:100%;
+ height:auto;
+ object-fit:contain;
+ border-radius:12px;
+ cursor:pointer;
+}
+
+/* ===== POPUP ===== */
+.popup{
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.9);
+ display:none;
+ justify-content:center;
+ align-items:center;
+}
+.popup img{
+ max-width:90%;
+ max-height:90%;
+ border-radius:12px;
+}
+
+/* EMPTY */
+.empty{
+ text-align:center;
+ font-size:22px;
+ color:#64748b;
+ padding:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/events">Events</a>
+<a href="/gallery">Gallery</a>
+<a href="/contact">Contact</a>
+</header>
+
+<div class="container">
+<h2>Our Events</h2>
+
+{% for e in events %}
+<div class="card">
+
+<h3>{{ e.title }}</h3>
+<div class="date">📅 {{ e.date }}</div>
+
+<div class="event-images">
+{% for img in e.image.split(',') %}
+<div class="img-box">
+<img src="{{ url_for('static', filename='uploads/events/' + img) }}"
+onclick="openPopup(this.src)">
+</div>
+{% endfor %}
+</div>
+
+<p style="font-size:19px; line-height:1.7;">{{ e.description }}</p>
+
+</div>
+
+{% else %}
+<div class="empty">No events available</div>
+{% endfor %}
+</div>
+
+<div class="popup" id="popup" onclick="closePopup()">
+<img id="popupImg">
+</div>
+
+<script>
+function openPopup(src){
+ document.getElementById("popup").style.display="flex";
+ document.getElementById("popupImg").src=src;
+}
+function closePopup(){
+ document.getElementById("popup").style.display="none";
+}
+</script>
+
+</body>
+</html>
