@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About - Madurai Sevashram</title>
+
+<style>
+
+/* ===== ANIMATED BACKGROUND ===== */
+
+body{
+margin:0;
+font-family:"Segoe UI",system-ui,sans-serif;
+background:linear-gradient(120deg,#dbeafe,#eef5ff,#e0f2fe,#f0f9ff);
+background-size:400% 400%;
+animation:bgMove 18s ease infinite;
+color:#0f172a;
+line-height:1.9;
+font-size:20px;
+overflow-x:hidden;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* floating circles animation */
+
+body::before,
+body::after{
+content:"";
+position:fixed;
+width:400px;
+height:400px;
+border-radius:50%;
+background:rgba(59,130,246,0.15);
+animation:float 14s infinite ease-in-out;
+z-index:-1;
+}
+
+body::after{
+width:300px;
+height:300px;
+left:70%;
+top:60%;
+animation-delay:4s;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-60px)}
+100%{transform:translateY(0)}
+}
+
+
+/* ===== HEADER ===== */
+
+header{
+background:rgba(11,60,93,.9);
+backdrop-filter:blur(8px);
+padding:20px;
+text-align:center;
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+header a{
+color:white;
+margin:0 18px;
+text-decoration:none;
+font-weight:700;
+font-size:20px;
+transition:.3s;
+}
+
+header a:hover{
+color:#7dd3fc;
+transform:translateY(-3px);
+}
+
+
+/* ===== HERO ===== */
+
+.hero{
+text-align:center;
+padding:110px 20px;
+color:white;
+background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+url('/static/images/about-bg.jpg') center/cover;
+animation:fadeDown 1s ease;
+}
+
+.hero h1{
+font-size:52px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:26px;
+}
+
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-40px);}
+to{opacity:1;}
+}
+
+
+/* ===== CONTAINER ===== */
+
+.container{
+max-width:1150px;
+margin:auto;
+padding:80px 20px;
+}
+
+.section-title{
+text-align:center;
+font-size:42px;
+margin-bottom:15px;
+color:#0b3c5d;
+}
+
+.section-sub{
+text-align:center;
+font-size:22px;
+margin-bottom:50px;
+color:#475569;
+}
+
+
+/* ===== GLASS CARD ===== */
+
+.card{
+background:rgba(255,255,255,.7);
+backdrop-filter:blur(10px);
+padding:40px;
+margin:35px 0;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.18);
+transition:.4s;
+font-size:22px;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+}
+
+
+/* ===== INFO GRID ===== */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.box{
+background:rgba(255,255,255,.75);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:20px;
+box-shadow:0 12px 30px rgba(0,0,0,.15);
+font-size:22px;
+font-weight:600;
+transition:.4s;
+}
+
+.box:hover{
+transform:scale(1.06);
+}
+
+
+/* ===== PROGRAM LIST ===== */
+
+.list{
+background:rgba(255,255,255,.75);
+padding:40px;
+border-radius:20px;
+box-shadow:0 12px 30px rgba(0,0,0,.15);
+}
+
+.list li{
+margin-bottom:16px;
+font-size:22px;
+}
+
+
+/* ===== VISION MISSION ===== */
+
+.vm-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:35px;
+margin-top:30px;
+}
+
+.vm-box{
+background:linear-gradient(135deg,#e0f2fe,#ffffff);
+padding:40px;
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.18);
+font-size:22px;
+transition:.4s;
+}
+
+.vm-box:hover{
+transform:translateY(-10px);
+}
+
+.vm-box h3{
+color:#0b3c5d;
+font-size:30px;
+margin-bottom:10px;
+}
+
+
+/* ===== FOOTER ===== */
+
+footer{
+background:#0b3c5d;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:80px;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/events">Events</a>
+<a href="/gallery">Gallery</a>
+<a href="/report">Report</a>
+<a href="/contact">Contact</a>
+</header>
+
+
+<section class="hero">
+<h1>Madurai Sevashram Children's Home</h1>
+<p>Love • Care • Education • Empowerment</p>
+</section>
+
+
+<section class="container">
+
+<h2 class="section-title">Children's Home at Madurai Sevashram</h2>
+
+<div class="card">
+
+<p>
+A prestigious welfare organization, Madurai Sevashram Children's Home is committed to protecting, caring for, and empowering impoverished mothers and children. The organization was started by <b>T.V.S. Soundarama</b> and <b>Pankajam Rajam</b> with the intention of uplifting underprivileged girls and giving them a safe and supportive environment that fosters development, learning, and personal growth.
+</p>
+
+<p>
+For girls from low-income families, the home provides a secure place where they receive care, guidance, and opportunities to live meaningful and successful lives.
+</p>
+
+</div>
+
+
+<h2 class="section-title">About the Home</h2>
+
+<div class="card">
+
+<p>
+Madurai Sevashram is a specialized girls' home that provides emotional care, education, and shelter. Currently around <b>31 girls</b> stay in the home, which has the capacity to accommodate <b>36 girls</b>.
+</p>
+
+<p>
+Each resident receives personal attention to meet her emotional, educational, and physical needs. The safe and structured environment ensures that every girl feels respected, protected, and empowered.
+</p>
+
+<p>
+The organization focuses on overall development including academic learning, communication skills, interpersonal relationships, time management, and independence.
+</p>
+
+</div>
+
+
+<h2 class="section-title">Home Information</h2>
+
+<div class="grid">
+
+<div class="box">🏠 Home: Viswanathapuram Girls Home</div>
+<div class="box">👧 Children: 39 Girls</div>
+<div class="box">📍 Location: P&T Nagar, Viswanathapuram</div>
+<div class="box">📬 Address: Old Natham Road, Madurai</div>
+<div class="box">🎁 Donations: Clothes, Provisions, Funds</div>
+<div class="box">🏢 Organisation: Madurai Sevashram NGO</div>
+
+</div>
+
+
+<h2 class="section-title">Supervision & Management</h2>
+
+<div class="card">
+
+<p>
+Madurai Sevashram operates under the supervision of the <b>Home Management Committee (HMC)</b> and in coordination with the <b>District Child Protection Unit (DCPU)</b>.
+</p>
+
+<p>
+These governing bodies ensure the safety, welfare, and development of all girls living in the home. Regular inspections, planning, and evaluations help maintain high standards of care, education, and security.
+</p>
+
+</div>
+
+
+<h2 class="section-title">Activities & Programs</h2>
+
+<div class="list">
+
+<ul>
+
+<li><b>Education & Academic Support</b> – Girls receive schooling, tutoring, and academic guidance.</li>
+
+<li><b>Life Skill Development</b> – Training in decision-making, hygiene, financial literacy, and computer basics.</li>
+
+<li><b>Cultural Activities</b> – Sports, arts, music, and dance programs.</li>
+
+<li><b>Counseling & Emotional Support</b> – Guidance from mentors and counselors.</li>
+
+</ul>
+
+</div>
+
+
+<h2 class="section-title">Vision & Mission</h2>
+
+<div class="vm-grid">
+
+<div class="vm-box">
+
+<h3>Vision</h3>
+
+<p>
+To create a society where underprivileged girls have access to education, protection, and opportunities for personal growth.
+</p>
+
+</div>
+
+
+<div class="vm-box">
+
+<h3>Mission</h3>
+
+<ul>
+
+<li>Provide safe shelter and care for vulnerable girls.</li>
+<li>Ensure access to education and academic support.</li>
+<li>Develop confidence and life skills.</li>
+<li>Improve quality of life through welfare programs.</li>
+<li>Encourage community participation.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<h2 class="section-title">Impact & Achievements</h2>
+
+<div class="card">
+
+<p>
+Madurai Sevashram has transformed many young lives. Several girls who stayed at the home have completed their education and moved forward into successful careers.
+</p>
+
+<p>
+By focusing on education, character development, and life skills, the home empowers girls to break the cycle of poverty and build confident futures.
+</p>
+
+</div>
+
+</section>
+
+
+<footer>
+Madurai Sevashram | Children's Home
+</footer>
+
+
+</body>
+</html>
